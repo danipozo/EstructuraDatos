@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+%Gummi|065|=)
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2.5cm]{geometry} 
+\usepackage{ upgreek }
+\usepackage{ amssymb }
+\usepackage{helvet}
+
+\usepackage{minted}
+\renewcommand{\familydefault}{\sfdefault}
+\title{\textbf{Plantilla}}
+\author{Javier Sáez Maldonado}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\item  Usando la notación O
+, determinar la eficiencia de los siguientes segmentos de
+código
+
+Analizaremos ambos códigos escribiendo en comentarios la eficiencia de cada parte
+
+\subsection*{Código 1}
+
+\begin{minted}{c++}
+
+	int n,j; //O(2)
+	int i = 1; int x = 0; //O(4)
+	do{
+		j = 1; //O(1)
+		while( j <= n)/* O(1) */{ 
+			j = j*2; // O(2)
+			x++; //O(1)
+		} // El bucle es de eficiencia O(l2(n)) * O(1) 
+		i++; //O(1)
+		
+	}while(i<=n); //O(n-1)
+	
+\end{minted}
+
+
+Así, la eficiencia de nuestro código es:
+
+\[
+O(2) + O(4) + O(n-1)*(O(l_2n)*(O(1)+O(2)+O(1))+O(1)) = 
+\]
+\[
+O(6) + O(n-1)*(O(4l_2n + 1)) = 
+\]
+\[
+O(6) + O(4nl_2n + n - 4l_2n - 1 ) = 
+\]
+\[
+O((4n - 4)l_2n + n + 5)
+\]
+
+Que, como sabemos por la notación $O$, podemos reducir todo eso en el que tenga mayor relevancia, quedando así como resultado final: 
+\[O(nl_2n)\]
+\subsection*{Código 2}
+
+\begin{minted}{c++}
+	
+	int n,j; int i = 2; int x = 0;
+	do{
+		j = 1
+		while(j<=i){
+		j = j*2; //O(2) 
+		x++;
+		
+	}while(i<=n)
+\end{minted}
+
+	
+\end{enumerate}
+
+\end{document}
