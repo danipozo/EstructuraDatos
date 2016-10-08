@@ -121,7 +121,7 @@ int main (int argc, char* argv[]) {
 
 Ahora, creamos el script que nos sirve para realizar de forma automática las ejecuciones de nuestro programa.
 
-```
+```sh
 #!/bin/csh                                                                      
 @ inicio = 100                                                                  
 @ fin = 30000                                                                   
@@ -151,7 +151,7 @@ Ya que el numero de datos no es excesivamente elevado, la eficiencia teórica y 
 
 Ahora, ajustamos los datos a una función cuadrática. Para ello, dentro de GNUPLOT usamos
 
-```
+```GNUPLOT
 f(x) = a*x**2 + b*x + c
 fit f(x) "tiempos_burbuja.dat" via a, b, c
 plot f(x), "tiempos_burbuja.dat"

@@ -147,3 +147,49 @@ correlation matrix of the fit parameters:
 a               1.000 
 b              -0.968  1.000 
 c               0.738 -0.861  1.000 
+
+
+*******************************************************************************
+Sat Oct  8 13:18:43 2016
+
+
+FIT:    data read from "tiempos_binaria.dat"
+        format = z
+        #datapoints = 91
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 24416.7           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 10.899
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 3.05527e-13
+rel. change during last iteration : -1.11444e-07
+
+degrees of freedom    (FIT_NDF)                        : 89
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 5.85908e-08
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.43289e-15
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = 6.64842e-08      +/- 1.026e-08    (15.43%)
+b               = -6.72876e-07     +/- 1.578e-07    (23.45%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.999  1.000 

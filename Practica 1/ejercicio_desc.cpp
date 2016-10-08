@@ -1,24 +1,27 @@
 #include <iostream>
 #include <ctime>    // Recursos para medir tiempos
 #include <cstdlib>  // Para generación de números pseudoaleatorios
+#include <algorithm>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 int operacion(int *v, int n, int x, int inf, int sup) {
   int med;
   bool enc=false;
   while ((inf<sup) && (!enc)) {
-    med = (inf+sup)/2; 
-    if (v[med]==x) 
+    med = (inf+sup)/2;
+    if (v[med]==x)
       enc = true;
-    else if (v[med] < x) 
+    else if (v[med] < x)
       inf = med+1;
     else
       sup = med-1;
   }
-  if (enc) 
+  if (enc)
     return med;
-  else 
+  else
     return -1;
 }
 
@@ -38,24 +41,35 @@ int main(int argc, char * argv[])
   int tam=atoi(argv[1]);     // Tamaño del vector
   if (tam<=0)
     sintaxis();
-  
+
   // Generación del vector aleatorio
   int *v=new int[tam];       // Reserva de memoria
   srand(time(0));            // Inicialización del generador de números pseudoaleatorios
   for (int i=0; i<tam; i++)  // Recorrer vector
     v[i] = rand() % tam;
-  
-  clock_t tini;    // Anotamos el tiempo de inicio
-  tini=clock();
+
+
+
+  sort(v, v+tam);
+
+
+  high_resolution_clock::time_point t1 = high_resolution_clock::now();
+
+//  clock_t tini;    // Anotamos el tiempo de inicio
+//  tini=clock();
 
   // Algoritmo a evaluar
   operacion(v,tam,tam+1,0,tam-1);
-  
-  clock_t tfin;    // Anotamos el tiempo de finalización
-  tfin=clock();
+
+  high_resolution_clock::time_point t2 = high_resolution_clock::now();
+//  clock_t tfin;    // Anotamos el tiempo de finalización
+//  tfin=clock();
 
   // Mostramos resultados
-  cout << tam << "\t" << (tfin-tini)/(double)CLOCKS_PER_SEC << endl;
-  
+
+duration<double> time_span = duration_cast<duration<double>>(t2-t1);
+cout << tam << "\t" << time_span.count() << endl;
+//  cout << tam << "\t" << (tfin-tini)/(double)CLOCKS_PER_SEC << endl;
+
   delete [] v;     // Liberamos memoria dinámica
 }
