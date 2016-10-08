@@ -1,7 +1,7 @@
 #!/bin/csh
-@ inicio = 100
-@ fin = 1000000
-@ incremento = 500
+@ inicio = 1000000
+@ fin = 10000000
+@ incremento = 100000
 set ejecutable = binaria
 set salida = tiempos_binaria.dat
 
