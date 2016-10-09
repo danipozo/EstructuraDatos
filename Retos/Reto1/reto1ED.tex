@@ -5,12 +5,13 @@
 \usepackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2.5cm]{geometry} 
 \usepackage{ upgreek }
 \usepackage{ amssymb }
+\usepackage{amsmath}
 \usepackage{helvet}
 
 \usepackage{minted}
 \renewcommand{\familydefault}{\sfdefault}
-\title{\textbf{Plantilla}}
-\author{Javier Sáez Maldonado}
+\title{\textbf{DOCUMENTO DE TRABAJO!}}
+\author{JaSaMaldo}
 \date{}
 
 \begin{document}
@@ -42,6 +43,11 @@ Analizaremos ambos códigos escribiendo en comentarios la eficiencia de cada par
 	
 \end{minted}
 
+Analicemos porque la eficiencia del bucle interior es $l_2(n)$:
+
+Llamemos $f(n)$ al número de veces que se ejecuta el bucle dependiendo del valor n,  entonces tenemos (por j multiplicarse por 2) que:
+
+\[ f(x) = f\left(\frac{x}{2}\right) + 1 = f\left(\frac{x}{4}\right) + 1 + 1 = ... = \underbrace{1 + 1 + ... + 1}_{log_2 (n)} \]
 
 Así, la eficiencia de nuestro código es:
 
