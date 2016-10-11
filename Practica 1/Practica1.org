@@ -263,3 +263,14 @@ El resultado ha sido el siguiente:
 #+BEGIN_LATEX
 \includegraphics[scale=1]{grafica_binaria_otro.eps}
 #+END_LATEX
+
+** Ejercicio 4
+
+Para realizar la ordenación vamos a realizar la siguiente función de la biblioteca /algorithm/:
+
+# +BEGIN_SRC c++
+
+sort(vector,tamaño); // Para ordenar el vector de menor a mayor.
+sort(vector,vector+tamaño,greater<int>()); // Para ordenar el vector de mayor a menor.
+
+# +END_SRC
