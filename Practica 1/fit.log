@@ -1,161 +1,12 @@
 
 
 *******************************************************************************
-Wed Oct  5 19:27:51 2016
+Tue Oct 11 19:02:51 2016
 
 
 FIT:    data read from "tiempos_burbuja.dat"
         format = z
         #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x + b
-fitted parameters initialized with current variable values
-
-iter      chisq       delta/lim  lambda   a             b            
-   0 1.7729508445e+10   0.00e+00  1.22e+04    1.000000e+00   1.000000e+00
-   7 2.6759366274e+00  -7.29e-03  1.22e-03    8.992455e-05  -4.574339e-01
-
-After 7 iterations the fit converged.
-final sum of squares of residuals : 2.67594
-rel. change during last iteration : -7.29146e-08
-
-degrees of freedom    (FIT_NDF)                        : 58
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.214795
-variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0461368
-
-Final set of parameters            Asymptotic Standard Error
-=======================            ==========================
-a               = 8.99245e-05      +/- 3.202e-06    (3.561%)
-b               = -0.457434        +/- 0.05505      (12.03%)
-
-correlation matrix of the fit parameters:
-                a      b      
-a               1.000 
-b              -0.864  1.000 
-
-
-*******************************************************************************
-Wed Oct  5 19:30:50 2016
-
-
-FIT:    data read from "tiempos_burbuja.dat"
-        format = z
-        #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x^2 + b*x + c
-fitted parameters initialized with current variable values
-
-
-
-*******************************************************************************
-Wed Oct  5 19:30:53 2016
-
-
-FIT:    data read from "tiempos_burbuja.dat"
-        format = z
-        #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x^2 + b*x + c
-fitted parameters initialized with current variable values
-
-
-
-*******************************************************************************
-Wed Oct  5 19:31:08 2016
-
-
-FIT:    data read from "tiempos_burbuja.dat"
-        format = z
-        #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x^2 + b*x + c
-fitted parameters initialized with current variable values
-
-
-
-*******************************************************************************
-Wed Oct  5 19:31:59 2016
-
-
-FIT:    data read from "tiempos_burbuja.dat"
-        format = z
-        #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x^2 + b*x + c
-fitted parameters initialized with current variable values
-
-
-
-*******************************************************************************
-Wed Oct  5 19:32:24 2016
-
-
-FIT:    data read from "tiempos_burbuja.dat"
-        format = z
-        #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x^2 + b*x + c
-fitted parameters initialized with current variable values
-
-
-
-*******************************************************************************
-Wed Oct  5 19:33:07 2016
-
-
-FIT:    data read from "tiempos_burbuja.dat"
-        format = z
-        #datapoints = 60
-        residuals are weighted equally (unit weight)
-
-function used for fitting: f(x)
-	f(x) = a*x**2 + b*x + c
-fitted parameters initialized with current variable values
-
-iter      chisq       delta/lim  lambda   a             b             c            
-   0 4.7691969979e+10   0.00e+00  2.11e+04    8.992455e-05  -4.574339e-01   1.000000e+00
-   8 4.1786603509e-03  -4.18e-06  2.11e-04    3.147882e-09  -3.567540e-06   7.192526e-04
-
-After 8 iterations the fit converged.
-final sum of squares of residuals : 0.00417866
-rel. change during last iteration : -4.18279e-11
-
-degrees of freedom    (FIT_NDF)                        : 57
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00856212
-variance of residuals (reduced chisquare) = WSSR/ndf   : 7.33098e-05
-
-Final set of parameters            Asymptotic Standard Error
-=======================            ==========================
-a               = 3.14788e-09      +/- 1.649e-11    (0.5238%)
-b               = -3.56754e-06     +/- 5.061e-07    (14.19%)
-c               = 0.000719253      +/- 0.003252     (452.1%)
-
-correlation matrix of the fit parameters:
-                a      b      c      
-a               1.000 
-b              -0.968  1.000 
-c               0.738 -0.861  1.000 
-
-
-*******************************************************************************
-Sat Oct  8 13:18:43 2016
-
-
-FIT:    data read from "tiempos_binaria.dat"
-        format = z
-        #datapoints = 91
         residuals are weighted equally (unit weight)
 
 function used for fitting: f(x)
@@ -164,32 +15,13 @@ fitted parameters initialized with current variable values
 
 
  Iteration 0
- WSSR        : 24416.7           delta(WSSR)/WSSR   : 0
+ WSSR        : 2.8371e+11        delta(WSSR)/WSSR   : 0
  delta(WSSR) : 0                 limit for stopping : 1e-05
- lambda	  : 10.899
+ lambda	  : 0
 
 initial set of free parameter values
 
 a               = 1
 b               = 1
+BREAK:          Singular matrix in Givens()
 
-After 6 iterations the fit converged.
-final sum of squares of residuals : 3.05527e-13
-rel. change during last iteration : -1.11444e-07
-
-degrees of freedom    (FIT_NDF)                        : 89
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 5.85908e-08
-variance of residuals (reduced chisquare) = WSSR/ndf   : 3.43289e-15
-
-Final set of parameters            Asymptotic Standard Error
-=======================            ==========================
-
-a               = 6.64842e-08      +/- 1.026e-08    (15.43%)
-b               = -6.72876e-07     +/- 1.578e-07    (23.45%)
-
-
-correlation matrix of the fit parameters:
-
-               a      b      
-a               1.000 
-b              -0.999  1.000 

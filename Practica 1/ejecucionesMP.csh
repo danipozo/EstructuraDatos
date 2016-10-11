@@ -13,9 +13,6 @@ while ( $i <= $fin )
   @ i += $incremento
 end
 
-@ inicio = 100
-@ fin = 30000
-@ incremento = 500
 set ejecutable = peor
 set salida = peor.dat
 

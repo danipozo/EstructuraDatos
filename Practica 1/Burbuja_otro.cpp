@@ -8,20 +8,21 @@
 using namespace std;
 
 void ordenar(int *v, int n) {
-
-  for (int i=0; i<n-1; i++)
-
+  bool cambio =true;
+  for (int i=0; i<n-1 && cambio; i++)
+  {
+    cambio = false;
     for (int j=0; j<n-i-1; j++)
 
       if (v[j]>v[j+1]) {
-
+        cambio = true;
         int aux = v[j];
         v[j] = v[j+1];
         v[j+1] = aux;
 
       }
+  }
 }
-
 
 void sintaxis()
 {
@@ -49,7 +50,8 @@ int main (int argc, char* argv[]) {
     v[i] = rand() % vmax;    // Generar aleatorio [0,vmax[
 
 
-  sort(v,v+tam); //ordenado para mejor caso.
+    sort(v,v+tam);
+
   clock_t tini;    // Anotamos el tiempo de inicio
   tini=clock();
 
