@@ -218,7 +218,10 @@ Primero tenemos una declaración y una declaración y asignación: 3*O(1).
 Ahora, podemos ver que como tenemos un bucle usamos la *regla del producto* y tenemos que multiplicar O(logaritmo en base 2 de n) por lo que haya dentro del bucle, que en este caso es O(1) en la asignación y como tenemos un **IF/ELSE** aplicamos la regla del máximo de ellos, que en este caso es en todas 2*O(1) luego es irrelevante.
 Después, volvemos a tener un IF/ELSE en el que los dos son 2*O(1) y por ello la regla del maximo tambien escoge a cualquiera de los dos.
 
-Ahora, como todo ese código no está dentro de ningún bucle, aplicamos la *regla de la suma* y tenemos por tanto
-O(3) + O(logaritmo en base 2 de n) * O(2) + O(2) = O(3 + 2 * (logaritmo en base 2 de n) + 2).
+Ahora, como todo ese código no está dentro de ningún bucle, aplicamos la *regla de la suma* y tenemos por tanto:
 
-Sin embargo, por la notación O grande podemos resumir en que eso es igual a O(logaritmo en base 2 de n) y esta es nuestra eficiencia teórica.
+\[
+O(3)+O(l_2 n)*O(2) +O(2) = O(3+ 2*l_2n+2)
+\]
+
+Sin embargo, por la notación O grande podemos resumir en que eso es igual a $O(l_2n)$ y esta es nuestra eficiencia teórica.
