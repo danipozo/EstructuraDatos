@@ -22,8 +22,7 @@
 
 * Estructura de datos - Práctica 1
 
-Francisco Javier Sáez Maldonado
- y Luis Antonio Ortega Andrés
+Francisco Javier Sáez Maldonado y Luis Antonio Ortega Andrés
 
 2º Doble Grado en Ingeniería Informática y Matemáticas
 
@@ -41,16 +40,14 @@ void ordenar(int * v , int n) {
 
       if (v[j]>v[j+1]) {
 
-        int aux = v[j];
-        v[j] = v[j+1];
-        v[j+1] = aux;
-      }
-}
+        int aux = v[j]; v[j] = v[j+1]; v[j+1] = aux; } }
 
 #+END_SRC
 
 
-Vamos a calcular  primero su eficiencia teórica. Para ello estableceremos según la notación O grande el peso de cada una de las partes.
+Vamos a calcular primero su eficiencia teórica. Para ello
+estableceremos según la notación O grande el peso de cada una de las
+partes.
 
 #+BEGIN_SRC c++
 void ordenar(int * v, int n) {
@@ -61,25 +58,30 @@ void ordenar(int * v, int n) {
 
       if (v[j]>v[j+1]) { //O(1)
 
-        int aux = v[j]; //O(1)
-        v[j] = v[j+1]; //O(1)
-        v[j+1] = aux; //O(1)
+        int aux = v[j]; //O(1) v[j] = v[j+1]; //O(1) v[j+1] = aux;
+        //O(1)
 
-      }
-}
+      } }
 #+END_SRC
 
-Así, como en los bucles anidados, usamos la regla del producto O(f(n))O(g(n)) = O(f(n)g(n)) y de esta forma tenemos que "el polinomio de la eficiencia teórica del algoritmo es" O((n-1)4*(n-1)). El 4 está porque dentro del segundo bucle tenemos 4 operaciones que son O(1).
+Así, como en los bucles anidados, usamos la regla del producto
+O(f(n))O(g(n)) = O(f(n)g(n)) y de esta forma tenemos que "el polinomio
+de la eficiencia teórica del algoritmo es" O((n-1)4*(n-1)). El 4 está
+porque dentro del segundo bucle tenemos 4 operaciones que son O(1).
 
-Sin embargo, por la notación O grande, podemos obviar los coeficientes del monomio de mayor grado e incluso obviar los demás monomios, por lo que el polinomio queda reducido a ser O(n^2), siendo esta la eficiencia teórica del código.
+Sin embargo, por la notación O grande, podemos obviar los coeficientes
+del monomio de mayor grado e incluso obviar los demás monomios, por lo
+que el polinomio queda reducido a ser O(n^2), siendo esta la
+eficiencia teórica del código.
 
-Ahora, creamos un fichero **ordenación.cpp** insertando este código para ordenar un vector. Para ello, nos hemos ayudado de los que venían de prueba.
+Ahora, creamos un fichero **ordenación.cpp** insertando este código
+para ordenar un vector. Para ello, nos hemos ayudado de los que venían
+de prueba.
 
 #+BEGIN_SRC c++
 
-#include <iostream>
-#include <ctime>    // Recursos para medir tiempos
-#include <cstdlib>  // Para generación de números pseudoaleatorios
+#include <iostream> include <ctime> // Recursos para medir tiempos
+#include <cstdlib> // Para generación de números pseudoaleatorios
 
 using namespace std;
 
@@ -91,78 +93,58 @@ void ordenar(int * v, int n) {
 
       if (v[j]>v[j+1]) {
 
-        int aux = v[j];
-        v[j] = v[j+1];
-        v[j+1] = aux;
+        int aux = v[j]; v[j] = v[j+1]; v[j+1] = aux;
 
-      }
-}
+      } }
 
 
-void sintaxis()
-{
-  cerr << "Sintaxis:" << endl;
-  cerr << "  TAM: Tamaño del vector (>0)" << endl;
-  cerr << "  VMAX: Valor máximo (>0)" << endl;
-  cerr << "Se genera un vector de tamaño TAM con elementos aleatorios en [0,VMAX[" << endl;
-  exit(EXIT_FAILURE);
-}
+void sintaxis() { cerr << "Sintaxis:" << endl; cerr << " TAM: Tamaño
+del vector (>0)" << endl; cerr << " VMAX: Valor máximo (>0)" << endl;
+cerr << "Se genera un vector de tamaño TAM con elementos aleatorios en
+[0,VMAX[" << endl; exit(EXIT_FAILURE); }
 
 
 int main (int argc, char* argv[]) {
 
-  if (argc!=3)
-    sintaxis();
-  int tam=atoi(argv[1]);     // Tamaño del vector
-  int vmax=atoi(argv[2]);    // Valor máximo
-  if (tam<=0 || vmax<=0)
+  if (argc!=3) sintaxis(); int tam=atoi(argv[1]); // Tamaño del vector
+    int vmax=atoi(argv[2]); // Valor máximo if (tam<=0 || vmax<=0)
     sintaxis();
 
-  // Generación del vector aleatorio
-  int * v=new int[tam];       // Reserva de memoria
-  srand(time(0));            // Inicialización del generador de números pseudoaleatorios
-  for (int i=0; i<tam; i++)  // Recorrer vector
-    v[i] = rand() % vmax;    // Generar aleatorio [0,vmax[
+  // Generación del vector aleatorio int * v=new int[tam]; // Reserva
+  de memoria srand(time(0)); // Inicialización del generador de
+  números pseudoaleatorios for (int i=0; i<tam; i++) // Recorrer
+  vector v[i] = rand() % vmax; // Generar aleatorio [0,vmax[
 
-  clock_t tini;    // Anotamos el tiempo de inicio
-  tini=clock();
+  clock_t tini; // Anotamos el tiempo de inicio tini=clock();
 
   ordenar(v,tam); // de esta forma forzamos el peor caso
 
-  clock_t tfin;    // Anotamos el tiempo de finalización
-  tfin=clock();
+  clock_t tfin; // Anotamos el tiempo de finalización tfin=clock();
 
-  // Mostramos resultados
-  cout << tam << "\t" << (tfin-tini)/(double)CLOCKS_PER_SEC << endl;
+  // Mostramos resultados cout << tam << "\t" <<
+  (tfin-tini)/(double)CLOCKS_PER_SEC << endl;
 
-  delete [] v;     // Liberamos memoria dinámica
+  delete [] v; // Liberamos memoria dinámica
 
 }
 
 
 #+END_SRC
 
-Ahora, creamos el script que nos sirve para realizar de forma automática las ejecuciones de nuestro programa.
+Ahora, creamos el script que nos sirve para realizar de forma
+automática las ejecuciones de nuestro programa.
 
 #+BEGIN_SRC sh
 
-#!/bin/csh                                                                      
-@ inicio = 100                                                                  
-@ fin = 30000                                                                   
-@ incremento = 500                                                              
-set ejecutable = burbuja                                                        
-set salida = tiempos_burbuja.dat                                                
-@ i = $inicio                                                                   
-echo > $salida                                                                  
-while ( $i <= $fin )                                                            
-  echo Ejecución tam = $i                                                       
-  echo `./{$ejecutable} $i 10000` >> $salida                                    
-  @ i += $incremento                                                            
-end   
+#!/bin/csh @ inicio = 100 @ fin = 30000 @ incremento = 500 set
+ejecutable = burbuja set salida = tiempos_burbuja.dat @ i = $inicio
+echo > $salida while ( $i <= $fin ) echo Ejecución tam = $i echo
+`./{$ejecutable} $i 10000` >> $salida @ i += $incremento end
 
 #+END_SRC
 
-Por último, pintamos la gráfica con GNUPLOT quedando el siguiente resultado.
+Por último, pintamos la gráfica con GNUPLOT quedando el siguiente
+resultado.
 
 #+BEGIN_LATEX
 
@@ -170,18 +152,22 @@ Por último, pintamos la gráfica con GNUPLOT quedando el siguiente resultado.
 
 #+END_LATEX
 
-Donde podemos ver que la linea verde es la eficiencia teórica y las cruces rojas es la eficiencia resultante al ejecutar nuestro programa en un ordenador que realiza 389119090 operaciones por segundo ejecutando este programa.
+Donde podemos ver que la linea verde es la eficiencia teórica y las
+cruces rojas es la eficiencia resultante al ejecutar nuestro programa
+en un ordenador que realiza 389119090 operaciones por segundo
+ejecutando este programa.
 
-Ya que el numero de datos no es excesivamente elevado, la eficiencia teórica y la práctica son bastante parecidas.
+Ya que el numero de datos no es excesivamente elevado, la eficiencia
+teórica y la práctica son bastante parecidas.
 
 
 ** Ejercicio 2.
 
-Ahora, ajustamos los datos a una función cuadrática. Para ello, dentro de GNUPLOT usamos
+Ahora, ajustamos los datos a una función cuadrática. Para ello, dentro
+de GNUPLOT usamos
 
 #+BEGIN_SRC GNUPLOT
-f(x) = a*x**2 + b*x + c
-fit f(x) "tiempos_burbuja.dat" via a, b, c
+f(x) = a*x**2 + b*x + c fit f(x) "tiempos_burbuja.dat" via a, b, c
 plot f(x), "tiempos_burbuja.dat"
 
 #+END_SRC
@@ -197,68 +183,71 @@ Y obtenemos así esta gráfica:
 
 ** Ejercicio 3.
 
-El código del ejercicio es el que hemos usado para hacer los dos primeros ejercicios salvo la función que se realiza sobre el vector. En este caso la función es:
+El código del ejercicio es el que hemos usado para hacer los dos
+primeros ejercicios salvo la función que se realiza sobre el
+vector. En este caso la función es:
 
 #+BEGIN_SRC c++
-int operacion(int * v, int n, int x, int inf, int sup) {
-  int med;  //Declaro una medida
-  bool enc=false;
+int operacion(int * v, int n, int x, int inf, int sup) { int med;
+  //Declaro una medida bool enc=false;
 
-  while ((inf<sup) && (!enc)) {
-    med = (inf+sup)/2;  
-    if (v[med]==x)
-      enc = true;
-    else if (v[med] < x)
-      inf = med+1;
-    else
-      sup = med-1;
-  }
-  if (enc)
-    return med;
-  else
-    return -1;
-}
+  while ((inf<sup) && (!enc)) { med = (inf+sup)/2; if (v[med]==x) enc
+    = true; else if (v[med] < x) inf = med+1; else sup = med-1; } if
+    (enc) return med; else return -1; }
 #+END_SRC
 
-Lo que hace esta función (y por tanto este programa, pues se centra en la función) es buscar un elemento en un vector, de forma que se va primero al medio del vector y comprueba si es el elemento que buscamos. Si no lo es, se mira si el dato buscado es es mayor, va a volver a buscar en el mismo vector pero tomando solo la parte que queda a la derecha de la mitad y si es menor busca en la parte que está a la izquierda de la mitad. Para seguir buscando, vuelve a realizar el mismo proceso que acaba de hacer en el subvector que corresponda(de la izquierda o de la derecha).Este algoritmo es conocido como **búsqueda binaria**
+Lo que hace esta función (y por tanto este programa, pues se centra en
+la función) es buscar un elemento en un vector, de forma que se va
+primero al medio del vector y comprueba si es el elemento que
+buscamos. Si no lo es, se mira si el dato buscado es es mayor, va a
+volver a buscar en el mismo vector pero tomando solo la parte que
+queda a la derecha de la mitad y si es menor busca en la parte que
+está a la izquierda de la mitad. Para seguir buscando, vuelve a
+realizar el mismo proceso que acaba de hacer en el subvector que
+corresponda(de la izquierda o de la derecha).Este algoritmo es
+conocido como **búsqueda binaria**
 
 Calculemos ahora su eficiencia.
 
 #+BEGIN_SRC c++
 
-int operacion(int * v, int n, int x, int inf, int sup) {
-  int med;  //Declaro una medida
+int operacion(int * v, int n, int x, int inf, int sup) { int med;
+  //Declaro una medida
 
   bool enc=false; // O(1)
 
-  while ((inf<sup) && (!enc)) { // O(logaritmo en base 2 de n)
-    med = (inf+sup)/2;  // O(1)
-    if (v[med]==x) // O(1)
-      enc = true; // O(1)
-    else if (v[med] < x) // O(1)
-      inf = med+1; // O(1)
-    else
-      sup = med-1; //O(1)
-  }
-  if (enc) // O(1)
-    return med;//  O(1)
-  else //O(1)
-    return -1; // O(1)
-}
+  while ((inf<sup) && (!enc)) { // O(logaritmo en base 2 de n) med =
+    (inf+sup)/2; // O(1) if (v[med]==x) // O(1) enc = true; // O(1)
+    else if (v[med] < x) // O(1) inf = med+1; // O(1) else sup =
+    med-1; //O(1) } if (enc) // O(1) return med;// O(1) else //O(1)
+    return -1; // O(1) }
 #+END_SRC
 
-Primero tenemos una declaración y una declaración y asignación: 3*O(1).
-Ahora, podemos ver que como tenemos un bucle usamos la *regla del producto* y tenemos que multiplicar O($log_2 (n)$) por lo que haya dentro del bucle, que en este caso es O(1) en la asignación y como tenemos un **IF/ELSE** aplicamos la regla del máximo de ellos, que en este caso es en todas 2*O(1) luego es irrelevante.
-Después, volvemos a tener un IF/ELSE en el que los dos son 2*O(1) y por ello la regla del maximo tambien escoge a cualquiera de los dos.
+Primero tenemos una declaración y una declaración y asignación:
+3*O(1).  Ahora, podemos ver que como tenemos un bucle usamos la *regla
+del producto* y tenemos que multiplicar O($log_2 (n)$) por lo que haya
+dentro del bucle, que en este caso es O(1) en la asignación y como
+tenemos un **IF/ELSE** aplicamos la regla del máximo de ellos, que en
+este caso es en todas 2*O(1) luego es irrelevante.  Después, volvemos
+a tener un IF/ELSE en el que los dos son 2*O(1) y por ello la regla
+del maximo tambien escoge a cualquiera de los dos.
 
-Ahora, como todo ese código no está dentro de ningún bucle, aplicamos la *regla de la suma* y tenemos por tanto
-O(3) + O($log_2 (n)$) * O(2) + O(2) = O(3 + 2 * ($log_2 (n)$) + 2).
+Ahora, como todo ese código no está dentro de ningún bucle, aplicamos
+la *regla de la suma* y tenemos por tanto O(3) + O($log_2 (n)$) *
+O(2) + O(2) = O(3 + 2 * ($log_2 (n)$) + 2).
 
-Sin embargo, por la notación O grande podemos resumir en que eso es igual a O($log_2(n)$) y esta es nuestra eficiencia teórica.
+Sin embargo, por la notación O grande podemos resumir en que eso es
+igual a O($log_2(n)$) y esta es nuestra eficiencia teórica.
 
-Al realizar la eficiencia empírica, lo primero que hemos notado ha sido que el programa que se nos proporciona no genera los vectores ordenados, para solucionarlo, hemos incluido la biblioteca /algorithm/ y hemos usado la función sort.
-Otro problema que hemos encontrado es que el reloj que estamos utilizando no tiene la suficiente precisión como para ver mejor la diferencia en una escala tan baja. Para solucionarlo, hemos cambiado el reloj a uno de la librería /chrono/, que tiene fama de ser el mas preciso y hemos procedido a hacer pruebas con esta nueva medición.
-El resultado ha sido el siguiente:
+Al realizar la eficiencia empírica, lo primero que hemos notado ha
+sido que el programa que se nos proporciona no genera los vectores
+ordenados, para solucionarlo, hemos incluido la biblioteca /algorithm/
+y hemos usado la función sort.  Otro problema que hemos encontrado es
+que el reloj que estamos utilizando no tiene la suficiente precisión
+como para ver mejor la diferencia en una escala tan baja. Para
+solucionarlo, hemos cambiado el reloj a uno de la librería /chrono/,
+que tiene fama de ser el mas preciso y hemos procedido a hacer pruebas
+con esta nueva medición.  El resultado ha sido el siguiente:
 
 #+BEGIN_LATEX
 \includegraphics[scale=1]{grafica_binaria_otro.eps}
@@ -266,11 +255,163 @@ El resultado ha sido el siguiente:
 
 ** Ejercicio 4
 
-Para realizar la ordenación vamos a realizar la siguiente función de la biblioteca /algorithm/:
+Para realizar la ordenación vamos a realizar la siguiente función de
+la biblioteca /algorithm/:
 
-# +BEGIN_SRC c++
+#+BEGIN_SRC c++
 
-sort(vector,tamaño); // Para ordenar el vector de menor a mayor.
-sort(vector,vector+tamaño,greater<int>()); // Para ordenar el vector de mayor a menor.
+sort(vector,vector+tamanio); // Para ordenar el vector de menor a
+mayor.  sort(vector,vector+tamanio,greater<int>()); // Para ordenar el
+vector de mayor a menor.
 
-# +END_SRC
+#+END_SRC
+
+Ahora, representamos las dos gráficas que han quedado al realizar con
+un script las ejecuciones de los programas.
+
+
+\includegraphics[scale=0.25]{MP.png}
+
+Podemos ver que al inicio ambas tardan el mismo tiempo de ejecución
+pero después el caso "peor" empieza a ascender de forma mucho más
+rápida en el tiempo de ejecución que la mejor, pues ordenar los datos
+que están ordenados al revés es más costoso para burbuja.
+
+** Ejercicio 5
+
+Con la siguiente implementación del algoritmo burbuja:
+
+#+BEGIN_SRC c++ 
+
+void ordenar(int *v, int n) { bool cambio=true; //O(1) for (int i=0;
+  i<n-1 && cambio; i++) { //O(4) cambio=false; //O(1) for (int j=0;
+  j<n-i-1; j++) //O(3) if (v[j]>v[j+1]) { //O(1) cambio=true; //O(1)
+  int aux = v[j]; //O(1) v[j] = v[j+1]; //O(1) v[j+1] = aux; //O(1) }
+  El if es //O(4) en total } // El bucle for interno es O(n-i)*O(4) }
+  //El bucle for externo O(n) }
+
+#+END_SRC
+
+En el hipotético caso de que estuviera nuestro vector ordenado,
+entonces en el segundo for sólo entraría una vez y cambio se quedaría
+en false, saliendo del primer bucle for, por lo que tendríamos $O(n)$
+del segundo for por O(1)* del primero, así que la eficiencia teórica
+sería $O(n)$ por la notación O.
+
+La empírica total sería, si el vector estuviera ordenado:
+
+\[ O(4)*(O(1)+O(n)) = O(4n + 4) \]
+
+Ahora, podemos dibujar con /gnuplot/ la gráfica de la eficiencia empírica:
+
+\includegraphics[scale=0.65]{burbuja2img.png}
+
+Donde podemos observar que nuestra gráfica se ajusta a la previsión que teníamos.
+
+** Ejercicio 6
+
+Volvemos a compilar nuestro ejercicio de burbuja, usando ahora:
+
+#+BEGIN_SRC bash
+g++ -O3 ordenacion.cpp -o ordenacion_optimizado
+#+END_SRC
+
+Ahora creamos un script para hacer de nuevo las ejecuciones, un script igual que los anteriores pero que ejecute este programa (/ordenacion-optimizado/). 
+Seguidamente, creamos nuestra gráfica comparándola con la del ordenación burbuja normal, y el resultado es el siguiente:
+
+
+\includegraphics[scale=0.25]{grafica6}
+
+Podemos ver como la compilación optimizada nos ayuda a mejorar mucho la eficiencia de nuestro código, quedando la gráfica de la segunda ejecución optimizado
+bastante por debajo de la gráfica de la ejecución que no está optimizada.
+
+
+** Ejercicio 7
+
+Vamos a crear primero nuestro programa para las matrices. No vamos a escribirlo entero, pero está estructurado en 3 partes.
+Lo que ocurre en el programa es que como sabemos que las matrices son de orden 2, sabemos las iteraciones exactas que harán nuestros bucles /for/.
+En la primera, tenemos la inicialización de las matrices; son 3 iguales, así que sólo analizaremos una y sumaremos 3 veces esa.
+
+#+BEGIN_SRC c++
+
+	int filas1 = 2,columnas1 = 2; //O(1)
+	int fil2 = 2,col2 = 2; //O(1)
+
+	int ** matrix1 = new int * [filas1]; //O(1)
+	for (int i = 0; i < filas1; i++)  // 2*O(3)
+		matrix1[i] = new int [columnas1]; //O(1)
+#+END_SRC 1
+
+Son bucles for simples, que tienen eficiencia $O(3)+O(1)=O(4)$ por lo que, multiplicándolo por 3 porque son 3 inicializaciones, tendríamos que esta parte tiene eficiencia
+$O(3*3) = O(1)$
+
+Ahora, tenemos una parte en la que se introducen las dos matrices. Se vuelve a hacer lo mismo dos veces, por lo que solo lo analizaremos una vez.
+
+
+#+BEGIN_SRC c++
+
+    cout << "\nIntroduzca la primera matriz con los elementos de cada fila " << endl; //O(1)
+
+    for (int i = 0; i < filas1; i++){ //O(2*3)
+        for (int j = 0; j < columnas1; j++) //O(2*3)
+            cin >> matrix1[i][j]; //O(1)
+        cout << endl; //O(1)
+    }
+
+#+END_SRC
+
+En este caso, tenemos dos bucles for anidados, cada uno hará 2 iteraciones por lo que podemos multiplicar el bucle interno, que tiene eficiencia $O(2*3 + 1)$ por el 
+bucle externo que tiene eficiencia $O(2*3)$ para ver que la eficiencia de nuestros bucles anidados es $O(2*3 + 1)*O(2*3 +1)= O(49)$, pero que por la notación O
+eso se puede reducir a $O(1)$
+
+Ahora, analizamos el producto de las matrices 2x2.
+
+#+BEGIN_SRC c++
+
+
+    for (int i = 0; i < filas1; i++){ //O(3*2)
+	for(int j = 0; j < col2; j++){ //O(3*2)
+		producto[i][j] = 0; //O(1)
+		for (int k = 0; k < columnas1; k++) //O(3*2)
+		producto[i][j] = producto[i][j] + matrix1[i][k] * matrix2[k][j]; //O(1)
+	}
+     }
+
+#+END_SRC
+
+Tenemos 3 bucles anidados, en los que el interno, el que maneja de iterador la /k/ tiene una eficiencia de $O(3*2)+2*O(1)$. El bucle que maneja la /j/ tiene la misma eficiencia,
+pues sabemos exactamente cuántas iteraciones hará. El bucle exterior, que maneja la /i/ como iterador, tiene una eficiencia $O(3*2)$.
+Ahora, como son bucles anidados debemos multiplicar la eficiencia de ellos:
+
+\[O(3*2+2)*O(3*2+2)*O(3*2) = O(384)]\
+
+Que, como sabemos por la notación /O/, se puede resumir en $O(1)$
+
+Ahora, queda la sección de imprimir el resultado y hacer /delete/ a las 3 matrices que habíamos creado. Son las 3 iguales, así que sólo veremos una.
+#+BEGIN_SRC c++
+
+    cout << "Resultado:" << endl; //O(1)
+    for(int i = 0; i < filas1; i++){ // O(3*2)
+        cout << "\n"; //O(1)
+	for(int j = 0; j < col2; j++)  //O(3*2)
+	cout << producto[i][j] << "  "; //O(1)
+     }
+
+    for(int i = 0; i < filas1; i++) //O(3*2)
+	 delete [] producto[i]; //O(1)
+    delete [] producto; //O(1)
+
+}
+#+END_SRC
+
+Sumando las eficiencias de los dos bloques independientes, tenemos la suma:
+
+\[ O(1) + O(3*2)*(O(1)+O(3*2 + 1))= O(49)\]
+
+Que, podemos volver a resumir en $O(1)$
+
+Ahora, como todas nuestras partes son código independiente, sumamos la eficiencia de todas las partes, que resulta ser de nuevo $O(1)$ por ser todos $O(1)$.
+Esto ocurre por saber exactamente cuántas operaciones vamos a realizar y ser un número bastante pequeño en todas ellas.  
+
+
+*
