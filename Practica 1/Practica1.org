@@ -414,4 +414,32 @@ Ahora, como todas nuestras partes son código independiente, sumamos la eficienc
 Esto ocurre por saber exactamente cuántas operaciones vamos a realizar y ser un número bastante pequeño en todas ellas.  
 
 
-*
+* Ejercicio 8
+Vamos a realizar el estudio del algoritmo, primero con el parámetro ~UMBRAL_MS~ en 100, que es el por defecto.
+El resultado es el siguiente:
+
+\includegraphics[scale=0.25]{merge1.png}
+
+
+Ahora, volvemos a ejecutar con ~UMBRAL_MS~ en 1000, para ver cómo cambia.
+
+\includegraphics[scale=0.25]{merge2.png}
+
+
+Por último, ejecutamos el programa con ~UMBRAL_MS~ en 10.000, y la gráfica producida es la siguiente.
+
+\includegraphics[scale=0.25]{merge3.png}
+
+Al seguir aumentando el ~UMBRAL_MS~ el tiempo de ejecución es mucho mayor no por el algoritmo de ordenación
+sino porque el programa realiza unas acciones mucho más largas como es copiar el vector varias veces y lo ordena
+con mergesort vauna cantidad mucho mayor de veces debido al aumento que hemos realizado del umbral
+
+
+* Informe de la eficiencia
+
+- Hardware utilizado: Hemos utilizado un procesador Intel Core i-7 5700HQ octacore a 2.7 Ghz.Además, el ordenador dispone de 8GB de RAM.
+- Sistema Operativo: GNU Linux. Distribución: Ubuntu 16.04 LTS.
+- Para la compilación hemos usado el compilador de C++ de la GNU
+- El ajuste de las gráficas lo hemos hecho mediante la orden fit de gnuplot.
+
+
