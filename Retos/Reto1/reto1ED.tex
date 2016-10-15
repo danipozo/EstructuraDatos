@@ -10,8 +10,9 @@
 
 \usepackage{minted}
 \renewcommand{\familydefault}{\sfdefault}
-\title{\textbf{DOCUMENTO DE TRABAJO!}}
-\author{JaSaMaldo}
+\title{\textbf{Reto 1 - Estructura de Datos}}
+\author{Javier Sáez Maldonado\\
+Luis Ortega Andrés}
 \date{}
 
 \begin{document}
@@ -90,4 +91,29 @@ Omitiendo ya, aquellas iteraciones que sabemos que pasarian a ser nulas por la n
 	
 \end{enumerate}
 
+
+\section*{Ejercicio 2}
+
+Para cada función $f(n)$ y cada tiempo $t$ de la tabla siguiente, determinar el mayor tamaño de un problema que puede ser resuelto en un tiempo $t$ (suponiendo que el algoritmo para resolver el problema tarda $f(n)$ microsegundos, es decir $f(n)*10^{-6}$ sg.)\\
+
+Para resolver este problema, lo hacemos de la siguiente forma:
+
+\[
+10^{-6}f(n) = t \Rightarrow n = f^{-1}(t*10^6)
+\]
+
+El resultado es el siguiente.
+
+
+\begin{tabular}{|l|l|llll}
+\cline{1-2}
+$f(n)$  & t             &                                       &                                              &                                                  &                                                        \\ \hline
+        & 1sg           & \multicolumn{1}{l|}{1h}               & \multicolumn{1}{l|}{1semana}                 & \multicolumn{1}{l|}{1 año}                       & \multicolumn{1}{l|}{1000 años}                         \\ \hline
+$l_2n$  & $10^{300000}$ & \multicolumn{1}{l|}{$2^{10^6 *3600}$} & \multicolumn{1}{l|}{$2^{10^6 *3600 * 24*7}$} & \multicolumn{1}{l|}{$2^{10^6*3600 * 24*7 * 52}$} & \multicolumn{1}{l|}{$2^{10^6 *3600 * 24*7 * 52*1000}$} \\ \hline
+$n$     & 100160256     & \multicolumn{1}{l|}{360576923076,9}   & \multicolumn{1}{l|}{$6,057692308*10^{13}$}   & \multicolumn{1}{l|}{$3.15*10^{15}$}              & \multicolumn{1}{l|}{$3.15*10^{18}$}                    \\ \hline
+$nl_2n$ & 62746,1       & \multicolumn{1}{l|}{$1,33*10^8$}      & \multicolumn{1}{l|}{$1,77*10^{10}$}          & \multicolumn{1}{l|}{$7,9*10^{11}$}               & \multicolumn{1}{l|}{$6.39*10^{14}$}                    \\ \hline
+$n^3$   & 100           & \multicolumn{1}{l|}{1532,6}           & \multicolumn{1}{l|}{8456,8}                  & \multicolumn{1}{l|}{31565}                       & \multicolumn{1}{l|}{315649}                            \\ \hline
+$2^n$   & 19,93         & \multicolumn{1}{l|}{31,7}             & \multicolumn{1}{l|}{39,13}                   & \multicolumn{1}{l|}{44,8}                        & \multicolumn{1}{l|}{54,8}                              \\ \hline
+$n!$    & 9,44          & \multicolumn{1}{l|}{12,78}            & \multicolumn{1}{l|}{14,6}                    & \multicolumn{1}{l|}{16}                          & \multicolumn{1}{l|}{18,2}                              \\ \hline
+\end{tabular}
 \end{document}
