@@ -1,5 +1,5 @@
-#+TITLE: Reto 1 de Estructuras de datos.
-#+AUTHOR: Daniel Pozo Escalona
+#+TITLE: Práctica 1 Estructura de datos.
+#+AUTHOR: Javier Sáez Maldonado y Luis Antonio Ortega Andrés
 #+LANGUAGE: es
 #+OPTIONS: toc:nil
 #+latex_header: \usepackage[spanish]{babel}
@@ -9,7 +9,7 @@
 #+latex_header: \usemintedstyle{manni}
 #+latex_header: \setminted{linenos=true}
 #+latex_header: \usepackage{graphicx}
-
+#+OPTIONS: H:3 num:0
 #+BEGIN_SRC emacs-lisp :exports results :results silent
   (require 'ox-latex)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -19,14 +19,7 @@
 #+END_SRC
 
 
-
-* Estructura de datos - Práctica 1
-
-Francisco Javier Sáez Maldonado y Luis Antonio Ortega Andrés
-
-2º Doble Grado en Ingeniería Informática y Matemáticas
-
-** Ejercicio 1.
+* Ejercicio 1.
 
 Teniendo el siguiente algoritmo:
 
@@ -161,7 +154,7 @@ Ya que el numero de datos no es excesivamente elevado, la eficiencia
 teórica y la práctica son bastante parecidas.
 
 
-** Ejercicio 2.
+* Ejercicio 2.
 
 Ahora, ajustamos los datos a una función cuadrática. Para ello, dentro
 de GNUPLOT usamos
@@ -181,7 +174,7 @@ Y obtenemos así esta gráfica:
 #+END_LATEX
 
 
-** Ejercicio 3.
+* Ejercicio 3.
 
 El código del ejercicio es el que hemos usado para hacer los dos
 primeros ejercicios salvo la función que se realiza sobre el
@@ -253,7 +246,7 @@ con esta nueva medición.  El resultado ha sido el siguiente:
 \includegraphics[scale=1]{grafica_binaria_otro.eps}
 #+END_LATEX
 
-** Ejercicio 4
+* Ejercicio 4
 
 Para realizar la ordenación vamos a realizar la siguiente función de
 la biblioteca /algorithm/:
@@ -277,7 +270,7 @@ pero después el caso "peor" empieza a ascender de forma mucho más
 rápida en el tiempo de ejecución que la mejor, pues ordenar los datos
 que están ordenados al revés es más costoso para burbuja.
 
-** Ejercicio 5
+* Ejercicio 5
 
 Con la siguiente implementación del algoritmo burbuja:
 
@@ -308,7 +301,7 @@ Ahora, podemos dibujar con /gnuplot/ la gráfica de la eficiencia empírica:
 
 Donde podemos observar que nuestra gráfica se ajusta a la previsión que teníamos.
 
-** Ejercicio 6
+* Ejercicio 6
 
 Volvemos a compilar nuestro ejercicio de burbuja, usando ahora:
 
@@ -326,93 +319,36 @@ Podemos ver como la compilación optimizada nos ayuda a mejorar mucho la eficien
 bastante por debajo de la gráfica de la ejecución que no está optimizada.
 
 
-** Ejercicio 7
+* Ejercicio 7
 
-Vamos a crear primero nuestro programa para las matrices. No vamos a escribirlo entero, pero está estructurado en 3 partes.
-Lo que ocurre en el programa es que como sabemos que las matrices son de orden 2, sabemos las iteraciones exactas que harán nuestros bucles /for/.
-En la primera, tenemos la inicialización de las matrices; son 3 iguales, así que sólo analizaremos una y sumaremos 3 veces esa.
+Vamos a crear primero nuestro programa para las matrices. No vamos a escribirlo entero. Sin embargo, vamos a centrarnos en el algoritmo de multiplicación de
+las dos matrices pues sabemos que son 3 bucles for anidados y que por la notación /O/ la eficiencia del código será /O/ del resultado que de la función
+de eficiencia de este algoritmo.
+Para ello, suponemos que la primera matriz es de orden /m*n/ y la segunda es de orden /n*t/.
+Por tanto, el producto sería de orden /m*t/
 
+Analizamos por ello el producto:
 #+BEGIN_SRC c++
-
-	int filas1 = 2,columnas1 = 2; //O(1)
-	int fil2 = 2,col2 = 2; //O(1)
-
-	int ** matrix1 = new int * [filas1]; //O(1)
-	for (int i = 0; i < filas1; i++)  // 2*O(3)
-		matrix1[i] = new int [columnas1]; //O(1)
-#+END_SRC 1
-
-Son bucles for simples, que tienen eficiencia $O(3)+O(1)=O(4)$ por lo que, multiplicándolo por 3 porque son 3 inicializaciones, tendríamos que esta parte tiene eficiencia
-$O(3*3) = O(1)$
-
-Ahora, tenemos una parte en la que se introducen las dos matrices. Se vuelve a hacer lo mismo dos veces, por lo que solo lo analizaremos una vez.
-
-
-#+BEGIN_SRC c++
-
-    cout << "\nIntroduzca la primera matriz con los elementos de cada fila " << endl; //O(1)
-
-    for (int i = 0; i < filas1; i++){ //O(2*3)
-        for (int j = 0; j < columnas1; j++) //O(2*3)
-            cin >> matrix1[i][j]; //O(1)
-        cout << endl; //O(1)
-    }
-
-#+END_SRC
-
-En este caso, tenemos dos bucles for anidados, cada uno hará 2 iteraciones por lo que podemos multiplicar el bucle interno, que tiene eficiencia $O(2*3 + 1)$ por el 
-bucle externo que tiene eficiencia $O(2*3)$ para ver que la eficiencia de nuestros bucles anidados es $O(2*3 + 1)*O(2*3 +1)= O(49)$, pero que por la notación O
-eso se puede reducir a $O(1)$
-
-Ahora, analizamos el producto de las matrices 2x2.
-
-#+BEGIN_SRC c++
-
-
-    for (int i = 0; i < filas1; i++){ //O(3*2)
-	for(int j = 0; j < col2; j++){ //O(3*2)
-		producto[i][j] = 0; //O(1)
-		for (int k = 0; k < columnas1; k++) //O(3*2)
-		producto[i][j] = producto[i][j] + matrix1[i][k] * matrix2[k][j]; //O(1)
+	for (int i = 0; i < filas1; i++){ //O(m)
+	    for(int j = 0; j < col2; j++){ //O(t)
+		producto[i][j] = 0;       //O(1)
+		for (int k = 0; k < columnas1; k++)  //O(n)
+		     producto[i][j] = producto[i][j] + matrix1[i][k] * matrix2[k][j]; //O(1)
+            }
 	}
-     }
 
 #+END_SRC
 
-Tenemos 3 bucles anidados, en los que el interno, el que maneja de iterador la /k/ tiene una eficiencia de $O(3*2)+2*O(1)$. El bucle que maneja la /j/ tiene la misma eficiencia,
-pues sabemos exactamente cuántas iteraciones hará. El bucle exterior, que maneja la /i/ como iterador, tiene una eficiencia $O(3*2)$.
-Ahora, como son bucles anidados debemos multiplicar la eficiencia de ellos:
+Así, como tenemos 3 bucles /for/ anidados, tenemos que aplicar la regla del producto para ver que la eficiencia del programa viene dada por:
+\[
+O(m)*O(t)*O(n) = O(m*t*n)
+\]
+Donde, ya sabemos que m son las filas de la 1 matriz, t las columnas d ela segunda matriz, y n las columnas de la primera y las filas de la segunda matriz.
 
-\[O(3*2+2)*O(3*2+2)*O(3*2) = O(384)]\
+Ahora, si las matrices fuesen cuadradas, serían ambas /n*n/ por lo que la eficiencia del código sería $O(n^3)$
 
-Que, como sabemos por la notación /O/, se puede resumir en $O(1)$
-
-Ahora, queda la sección de imprimir el resultado y hacer /delete/ a las 3 matrices que habíamos creado. Son las 3 iguales, así que sólo veremos una.
-#+BEGIN_SRC c++
-
-    cout << "Resultado:" << endl; //O(1)
-    for(int i = 0; i < filas1; i++){ // O(3*2)
-        cout << "\n"; //O(1)
-	for(int j = 0; j < col2; j++)  //O(3*2)
-	cout << producto[i][j] << "  "; //O(1)
-     }
-
-    for(int i = 0; i < filas1; i++) //O(3*2)
-	 delete [] producto[i]; //O(1)
-    delete [] producto; //O(1)
-
-}
-#+END_SRC
-
-Sumando las eficiencias de los dos bloques independientes, tenemos la suma:
-
-\[ O(1) + O(3*2)*(O(1)+O(3*2 + 1))= O(49)\]
-
-Que, podemos volver a resumir en $O(1)$
-
-Ahora, como todas nuestras partes son código independiente, sumamos la eficiencia de todas las partes, que resulta ser de nuevo $O(1)$ por ser todos $O(1)$.
-Esto ocurre por saber exactamente cuántas operaciones vamos a realizar y ser un número bastante pequeño en todas ellas.  
-
+Ahora, iremos en busca de la eficiencia empírica ejecutando un script que haga el producto de matrices cuadradas de orden /n*n/ variando el n para ver cómo varía
+el tiempo de ejecución.
 
 * Ejercicio 8
 Vamos a realizar el estudio del algoritmo, primero con el parámetro ~UMBRAL_MS~ en 100, que es el por defecto.
@@ -441,5 +377,4 @@ con mergesort vauna cantidad mucho mayor de veces debido al aumento que hemos re
 - Sistema Operativo: GNU Linux. Distribución: Ubuntu 16.04 LTS.
 - Para la compilación hemos usado el compilador de C++ de la GNU
 - El ajuste de las gráficas lo hemos hecho mediante la orden fit de gnuplot.
-
 
