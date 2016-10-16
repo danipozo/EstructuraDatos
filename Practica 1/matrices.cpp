@@ -11,9 +11,6 @@ int main(int argc, char** argv){
 	filas1 = columnas1 = fil2 = col2 = n;
 
 
-
-
-
 	int * * matrix1 = new int * [filas1];
 	for (int i = 0; i < filas1; i++)
 		matrix1[i] = new int [columnas1];
@@ -28,14 +25,10 @@ int main(int argc, char** argv){
 					matrix1[i][j]=1;
 		}
 
-
-
     for (int i = 0; i < fil2; i++){
         for (int j = 0; j < col2; j++)
              matrix2[i][j] = 1;
-
     }
-
 
 	if (columnas1 == fil2){
 
@@ -43,6 +36,9 @@ int main(int argc, char** argv){
 		for (int i = 0; i < col2; i++){
 			producto[i] = new int [col2];
 		}
+
+		clock_t t_antes = clock();
+
 
 		for (int i = 0; i < filas1; i++){
 			for(int j = 0; j < col2; j++){
@@ -53,11 +49,9 @@ int main(int argc, char** argv){
 			}
 		}
 
-		for(int i = 0; i < filas1; i++){
+		clock_t t_despues = clock();
 
-			for(int j = 0; j < col2; j++)
-				cout << producto[i][j];
-		}
+		cout << n << "  " << ((double)(t_despues - t_antes)); // CLOCKS_PER_SEC
 
 		for(int i = 0; i < filas1; i++)
 			delete [] producto[i];
