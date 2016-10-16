@@ -254,8 +254,8 @@ la biblioteca /algorithm/:
 #+BEGIN_SRC c++
 
 sort(vector,vector+tamanio); // Para ordenar el vector de menor a
-mayor.  sort(vector,vector+tamanio,greater<int>()); // Para ordenar el
-vector de mayor a menor.
+sort(vector,vector+tamanio,greater<int>()); // Para ordenar el
+//vector de mayor a menor.
 
 #+END_SRC
 
@@ -266,7 +266,7 @@ un script las ejecuciones de los programas.
 \includegraphics[scale=0.25]{MP.png}
 
 Podemos ver que al inicio ambas tardan el mismo tiempo de ejecución
-pero después el caso "peor" empieza a ascender de forma mucho más
+pero después el caso peor  empieza a ascender de forma mucho más
 rápida en el tiempo de ejecución que la mejor, pues ordenar los datos
 que están ordenados al revés es más costoso para burbuja.
 
@@ -352,6 +352,8 @@ el tiempo de ejecución. Quedando la gráfica de la eficiencia empírica frente 
 
 
 \includegraphics[scale=0.25]{matrices}
+
+Como podemos ver, siendo /f(x)/ la función $n^3$ ajustada por /GNUPLOT/, los datos se aproximan mucho a la gráfica de la funcion teórica.
 
 * Ejercicio 8
 Vamos a realizar el estudio del algoritmo, primero con el parámetro ~UMBRAL_MS~ en 100, que es el por defecto.
