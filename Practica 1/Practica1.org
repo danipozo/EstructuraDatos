@@ -174,7 +174,7 @@ Y obtenemos así esta gráfica:
 #+END_LATEX
 
 
-* Ejercicio 3.
+* Ejercicio 3
 
 El código del ejercicio es el que hemos usado para hacer los dos
 primeros ejercicios salvo la función que se realiza sobre el
@@ -184,9 +184,16 @@ vector. En este caso la función es:
 int operacion(int * v, int n, int x, int inf, int sup) { int med;
   //Declaro una medida bool enc=false;
 
-  while ((inf<sup) && (!enc)) { med = (inf+sup)/2; if (v[med]==x) enc
-    = true; else if (v[med] < x) inf = med+1; else sup = med-1; } if
-    (enc) return med; else return -1; }
+   while ((inf<sup) && (!enc))
+   { med = (inf+sup)/2;
+     if (v[med]==x) enc = true;
+     else if (v[med] < x) inf = med+1;
+     else sup = med-1;
+   }
+
+   if (enc) return med;
+   else return -1;
+ }
 #+END_SRC
 
 Lo que hace esta función (y por tanto este programa, pues se centra en
@@ -209,11 +216,19 @@ int operacion(int * v, int n, int x, int inf, int sup) { int med;
 
   bool enc=false; // O(1)
 
-  while ((inf<sup) && (!enc)) { // O(logaritmo en base 2 de n) med =
-    (inf+sup)/2; // O(1) if (v[med]==x) // O(1) enc = true; // O(1)
-    else if (v[med] < x) // O(1) inf = med+1; // O(1) else sup =
-    med-1; //O(1) } if (enc) // O(1) return med;// O(1) else //O(1)
-    return -1; // O(1) }
+  while ((inf<sup) && (!enc)) { // O(logaritmo en base 2 de n)
+       med =(inf+sup)/2; // O(1)
+       if (v[med]==x) // O(1)
+           enc = true; // O(1)
+       else if (v[med] < x) // O(1) 
+                inf = med+1; // O(1) 
+       else sup = med-1; //O(1)
+   }
+   if (enc) // O(1)
+       return med;// O(1) 
+   else //O(1)
+    return -1; // O(1)
+ }
 #+END_SRC
 
 Primero tenemos una declaración y una declaración y asignación:
@@ -272,7 +287,7 @@ que están ordenados al revés es más costoso para burbuja.
 
 Ahora, comparamos los 3 casos:
 
-\includegraphics[scale=0.25]{comparacion.png}
+\includegraphics[scale=0.75]{comparacion.png}
 
 Y podemos ahora ver cómo el algoritmo burbuja para un vector generado aleatoriamente es más lento que el de un vector que está ordenado hacia atrás u
 ordenado de forma correcta. Lo que ocurre aquí es que se da la /Branch Prediction/, en la que el procesador puede preveer que el vector está ordenado
@@ -284,12 +299,17 @@ Con la siguiente implementación del algoritmo burbuja:
 
 #+BEGIN_SRC c++ 
 
-void ordenar(int *v, int n) { bool cambio=true; //O(1) for (int i=0;
-  i<n-1 && cambio; i++) { //O(4) cambio=false; //O(1) for (int j=0;
-  j<n-i-1; j++) //O(3) if (v[j]>v[j+1]) { //O(1) cambio=true; //O(1)
-  int aux = v[j]; //O(1) v[j] = v[j+1]; //O(1) v[j+1] = aux; //O(1) }
-  El if es //O(4) en total } // El bucle for interno es O(n-i)*O(4) }
-  //El bucle for externo O(n) }
+void ordenar(int *v, int n) {
+ bool cambio=true; //O(1)
+ for (int i=0;i<n-1 && cambio; i++) { //O(4) cambio=false; //O(1)
+     for (int j=0;j<n-i-1; j++) //O(3)
+        if (v[j]>v[j+1]) { //O(1) cambio=true; //O(1)
+            int aux = v[j]; //O(1) 
+            v[j] = v[j+1]; //O(1) 
+            v[j+1] = aux; //O(1) } //El if es O(4) en total
+      }  El bucle for interno es O(n-i)*O(4)/* 
+  }//El bucle for externo O(n)
+ }
 
 #+END_SRC
 
