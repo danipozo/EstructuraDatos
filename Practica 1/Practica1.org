@@ -270,6 +270,14 @@ pero después el caso peor  empieza a ascender de forma mucho más
 rápida en el tiempo de ejecución que la mejor, pues ordenar los datos
 que están ordenados al revés es más costoso para burbuja.
 
+Ahora, comparamos los 3 casos:
+
+\includegraphics[scale=0.25]{comparacion.png}
+
+Y podemos ahora ver cómo el algoritmo burbuja para un vector generado aleatoriamente es más lento que el de un vector que está ordenado hacia atrás u
+ordenado de forma correcta. Lo que ocurre aquí es que se da la /Branch Prediction/, en la que el procesador puede preveer que el vector está ordenado
+hacia atrás y entonces puede ejecutar los pasos de forma más rápida que en el vector que está de forma aleatoria, que tiene que parar a comprobar en cada iteración.
+
 * Ejercicio 5
 
 Con la siguiente implementación del algoritmo burbuja:
