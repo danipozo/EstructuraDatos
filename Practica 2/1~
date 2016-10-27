@@ -1,0 +1,14 @@
+#ifndef __EVENTO_H__
+#define __EVENTO_H__
+
+#include <vector>
+
+class EventoHistorico {
+
+
+
+}
+
+
+
+#endif

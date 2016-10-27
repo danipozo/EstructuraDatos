@@ -11,11 +11,24 @@ all: $(BIN)/pruebacronologia
 documentacion:
 	doxygen doc/doxys/Doxyfile
 
-	
+# *********** Generación de ficheros objeto ******************
+
+$(OBJ)/EventoHistorico.o: $(SRC)/EventoHistorico.cpp $(INC)/EventoHistorico.h
+
+	$(CXX) $(SRC)/EventoHistorico.cpp -c $(OBJ)/EventoHistorico.o
+
+$(OBJ)/Cronologia.o: $(SRC)/Cronologia.cpp $(INC)/Cronologia.h $(INC)/EventoHistorico.h
+
+	$(CXX) $(SRC)/Cronologia.cpp -c $(OBJ)/Cronologia.o
+
+$(OBJ)/pruebacronologia.o: $(SRC)/pruebacronologia.cpp $(INC)/Cronologia.h
+
+	$(CXX) $(SRC)/pruebacronologia.cpp -c $(OBJ)/pruebacronologia.o
+
 # ************ Compilación de módulos ************
-$(BIN)/pruebacronologia:
+$(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o $(OBJ)/EventoHistorico.o
 
-
+	$(CXX) $(SRC)/pruebacronologia.cpp -o $(BIN)/pruebacronologia 
 
 # ************ Limpieza ************
 clean :
