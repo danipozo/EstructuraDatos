@@ -24,7 +24,7 @@ class EventoHistorico {
  */
 
       int fecha;
-      vector<string> eventos;
+      std::vector<string> eventos;
 
       public:
 
@@ -54,8 +54,7 @@ class EventoHistorico {
  */
       void addEvento(const string& nombre);
      
-
-      
+   
 }
 /**
  * @brief Imprime en un ostream un evento histórico. Es una función friend.
