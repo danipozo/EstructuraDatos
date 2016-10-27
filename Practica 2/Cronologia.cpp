@@ -1,12 +1,46 @@
-
+#include "Cronologia.h"
 
 
 	void Cronologia::Agregar(const EventoHistorico& evento){
-		
-		v.push(evento);
-	
+
+		// auto = std::vector<EventoHistorico>::const_iterator it
+		auto it = std::find_if(v.begin(), v.end(), ComparaEH<std::less<int>>(evento,std::less<int>()));
+  	v.insert(it, evento);
 	}
-	
-	bool Cronologia::Comparacion (const EventoHistorico& a,const EventoHistorico& b){
-		return a.Fecha() < b.Fecha();
+
+	const std::vector<std::string> Cronologia::ObtenerEventos(int Fecha){
+		auto it = std::find_if(v.begin(), v.end(), ComparaEH<std::equal_to<int>>(Fecha, std::equal_to<int>()));
+		return it->obtenerEventos();
 	}
+	friend std::istream& operator>>(std::istream& is, Cronologia c){
+
+		EventoHistorico evento;
+
+		while(is >> evento){
+
+			Agregar(evento);
+
+		}
+	}
+
+
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+	template<class Criterio> class ComparaEH {
+
+		int fecha;
+		Criterio c;
+
+	public:
+
+		ComparaEH(const EventoHistorico& v, const Criterio& _c): c(_c){
+
+			fecha = v.Fecha();
+		}
+
+		ComparaEH(int _fecha, Criterio c):fecha(_fecha), c(_c) {};
+
+		bool operator() (const EventoHistorico& evento){
+			return Criterio(fecha, evento.Fecha();
+		}
+}

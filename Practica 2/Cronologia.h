@@ -1,13 +1,15 @@
 ﻿#ifndef CRONOLOGIA_H
 #define CRONOLOGIA_H
 
-#include <queue>
+#include <vector>
+#include <algorithm>
 #include "EventoHistorico.h"
+#include <functional>
 
 class Cronologia {
 
 	private:
-	
+
 /**
  * @page repConjunto Rep del TDA Cronología
  *
@@ -20,35 +22,48 @@ class Cronologia {
  * Un objeto válido @e rep del TDA Cronología representa a un conjunto de sucesos ordenados por fecha.
  *
  */
-	priority_queue <EventoHistorico,std::vector <EventoHistorico> , Cronologia::Comparacion > v;
+		std::vector <EventoHistorico> v;
 
 	public:
-	
+
 /**
  * @brief Constructor de la clase cronología,
- */ 
-	
+ */
+
 	Cronologia() = default;
-	~Cronologia() = default;
-	
+
 /**
- * @brief Funcion de comparación para la ordenación
- * @param a elemento EventoHistórico a comparar.
- * @param b elemento EventoHistórico a comparar.
- * @return La fecha del elemento b es mayor que la del elemento a.
- */ 
-	
-	
-	bool Comparacion (const EventoHistorico& a,const EventoHistorico& b);
-	
+ * @brief Destructor de la clase cronología,
+ */
+	~Cronologia() = default;
+
+
 /**
  * @brief Incorporación de un elemento
  * @param evento Elemento a incorporar
- */ 
- 
+ */
+
 	void Agregar (const EventoHistorico& evento);
-	
-	
+
+	/**
+	 * @brief Devuelve los eventos de una fecha determinada
+	 * @param Fecha, de la cual se quiere conocer los eventos.
+	 */
+
+	const std::vector<std::string> ObtenerEventos(int Fecha);
+
+
+	/**
+	 * @brief Operacion de entrada.
+	 * @param is Flujo de entrada.
+	 * @param c Cronologia donde guardar la entrada.
+	 */
+
+
+	friend std::istream& operator>>(std::istream& is, Cronologia c);
+
+
+
 }
 
 #endif // CRONOLOGIA_H
