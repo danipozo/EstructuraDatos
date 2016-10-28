@@ -1,4 +1,7 @@
 
+#include "EventoHistorico.h"
+#include <iostream>
+
 string EventoHistorico::evento(int n){
 
   return eventos[i];
@@ -12,7 +15,7 @@ void EventoHistorico::addEvento(const string& nombre){
 }
 
 
-friend ostream operator << (ostream& os,const EventoHistorico& evento){
+friend std::ostream operator << (std::ostream& os,const EventoHistorico& evento){
 
   if(os){
     os << fecha << "#"
@@ -29,7 +32,7 @@ friend ostream operator << (ostream& os,const EventoHistorico& evento){
 
 }
 
-friend istream operator >> (const istream& is, EventoHistorico& evento){
+friend std::istream operator >> (const std::istream& is, EventoHistorico& evento){
 
   if(is){
 

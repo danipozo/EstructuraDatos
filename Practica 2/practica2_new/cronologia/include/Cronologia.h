@@ -64,6 +64,6 @@ class Cronologia {
 
 
 
-}
+};
 
 #endif // CRONOLOGIA_H

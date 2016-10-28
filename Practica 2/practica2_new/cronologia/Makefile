@@ -15,20 +15,20 @@ documentacion:
 
 $(OBJ)/EventoHistorico.o: $(SRC)/EventoHistorico.cpp $(INC)/EventoHistorico.h
 
-	$(CXX) $(SRC)/EventoHistorico.cpp $(CPPFLAGS) $(OBJ)/EventoHistorico.o
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/EventoHistorico.o $(SRC)/EventoHistorico.cpp
 
 $(OBJ)/Cronologia.o: $(SRC)/Cronologia.cpp $(INC)/Cronologia.h $(INC)/EventoHistorico.h
 
-	$(CXX) $(SRC)/Cronologia.cpp $(CPPFLAGS) $(OBJ)/Cronologia.o
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/Cronologia.o $(SRC)/Cronologia.cpp  
 
 $(OBJ)/pruebacronologia.o: $(SRC)/pruebacronologia.cpp $(INC)/Cronologia.h
 
-	$(CXX) $(SRC)/pruebacronologia.cpp $(CPPFLAGS) $(OBJ)/pruebacronologia.o
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/pruebacronologia.o  $(SRC)/pruebacronologia.cpp 
 
 # ************ Compilación de módulos ************
 $(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o $(OBJ)/EventoHistorico.o
 
-	$(CXX) $(SRC)/pruebacronologia.cpp -o $(BIN)/pruebacronologia 
+	$(CXX) -o $(BIN)/pruebacronologia $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o
 
 # ************ Limpieza ************
 clean :

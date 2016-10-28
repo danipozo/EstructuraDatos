@@ -1,4 +1,4 @@
-#include "cronologia.h"
+#include "Cronologia.h"
 #include <fstream>
 #include <iostream>
 
@@ -24,7 +24,7 @@ int main(int argc, char * argv[]){
    cout<<"Dime un año a consultar:";
    cin >> anio;
    
-   vector<string> eventos = mi_cronologia.GetEventos(anio);
+   vector<string> eventos = mi_cronologia.ObtenerEventos(anio);
    
    /* Escribimos */
    cout << anio << ":";
