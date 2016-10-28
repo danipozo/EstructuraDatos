@@ -1,5 +1,6 @@
 #include "Cronologia.h"
 #include "EventoHistorico.h"
+#include <iostream>
 
 
 //-------------------------------------------------------------------------
@@ -17,7 +18,7 @@
 			fecha = v.Fecha();
 		}
 
-		ComparaEH(int _fecha, Criterio c):fecha(_fecha), c(_c) {};
+		ComparaEH(int _fecha, Criterio _c):fecha(_fecha), c(_c) {};
 
 		bool operator() (const EventoHistorico& evento){
 		  return Criterio(fecha, evento.Fecha());
@@ -39,15 +40,20 @@
 		auto it = std::find_if(v.begin(), v.end(), ComparaEH<std::equal_to<int>>(Fecha, std::equal_to<int>()));
 		return it->Eventos();
 	}
-	friend std::istream& operator>>(std::istream& is, Cronologia c){
+	 std::istream& operator>>(std::istream& is, Cronologia c){
 
+	   if(is){
+	     
 		EventoHistorico evento;
 
 		while(is >> evento){
 
-			Agregar(evento);
+			c.Agregar(evento);
 
 		}
+	   }
+	
+	   return is;
 	}
 
 

@@ -8,14 +8,14 @@ string EventoHistorico::evento(int n){
 
 }
 
-void EventoHistorico::addEvento(const string& nombre){
+void EventoHistorico::Agregar(const string& nombre){
 
   eventos.insert(nombre, eventos.end());
 
 }
 
 
-friend std::ostream operator << (std::ostream& os,const EventoHistorico& evento){
+ std::ostream operator << (std::ostream& os,const EventoHistorico& evento){
 
   if(os){
     os << fecha << "#"
@@ -25,14 +25,12 @@ friend std::ostream operator << (std::ostream& os,const EventoHistorico& evento)
       if(it!= evento.end) os << "#";
     }
   }
-  else
-    os.setstate(ios::failbit);
   
   return os;
 
 }
 
-friend std::istream operator >> (const std::istream& is, EventoHistorico& evento){
+std::istream operator >> (const std::istream& is, EventoHistorico& evento){
 
   if(is){
 
@@ -50,9 +48,6 @@ friend std::istream operator >> (const std::istream& is, EventoHistorico& evento
     }
 
   }
-
-    else
-      is.setstate(ios::failbit);
 
     return is;
 

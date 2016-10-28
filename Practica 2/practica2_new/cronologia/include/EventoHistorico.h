@@ -51,7 +51,7 @@ class EventoHistorico {
  *  @brief Añade un evento al vector de eventos
  *  @param String con el nombre del evento.
  */
-      void addEvento(const std::string& nombre);
+      void Agregar(const std::string& nombre);
 
  /**
   * @brief Da el vector de todos los eventos
