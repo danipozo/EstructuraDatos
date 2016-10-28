@@ -21,7 +21,7 @@
 		ComparaEH(int _fecha, Criterio _c):fecha(_fecha), c(_c) {};
 
 		bool operator() (const EventoHistorico& evento){
-		  return Criterio(fecha, evento.Fecha());
+		  return Criterio()(fecha, evento.Fecha());
 		}
        };
 
@@ -40,6 +40,7 @@
 		auto it = std::find_if(v.begin(), v.end(), ComparaEH<std::equal_to<int>>(Fecha, std::equal_to<int>()));
 		return it->Eventos();
 	}
+
 	 std::istream& operator>>(std::istream& is, Cronologia c){
 
 	   if(is){
