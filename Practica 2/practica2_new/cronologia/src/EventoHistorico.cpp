@@ -7,17 +7,17 @@
 
 void EventoHistorico::Agregar(const std::string& nombre){
 
-  eventos.insert(nombre, eventos.end());
+  eventos.push_back(nombre);
 
 }
 
- std::ostream& operator << (std::ostream& os,const EventoHistorico& evento){
+std::ostream& operator<< (std::ostream& os,const EventoHistorico& evento){
 
   if(os){
-    os << fecha << "#";
-      for(std::vector<string>::iterator it = eventos.begin(); it !=  eventos.end(); it++){
-	os << eventos[it];
-	if(it!= eventos.end()) os << "#";
+    os << evento.fecha << "#";
+    for(std::vector<std::string>::const_iterator it = evento.eventos.begin(); it !=  evento.eventos.end(); ++it){
+	os << *it;
+	if(it!= evento.eventos.end()) os << "#";
       }
   }
   
@@ -25,11 +25,12 @@ void EventoHistorico::Agregar(const std::string& nombre){
 
 }
 
-std::istream& operator >> (std::istream& is, EventoHistorico& evento){
+std::istream& operator >>(std::istream& is, EventoHistorico& evento){
 
   if(is){
 
-    is >> fecha >> is.ignore();
+    is >> evento.fecha;
+    is.ignore();
 
     while(is.peek() != '\n'){
       std::string mistring;
@@ -39,7 +40,7 @@ std::istream& operator >> (std::istream& is, EventoHistorico& evento){
 	mistring.push_back(michar);
       }
       is.ignore();
-      eventos.insert(mistring,eventos.end());
+      evento.eventos.push_back(mistring);
 
     }
 
