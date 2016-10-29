@@ -43,18 +43,16 @@
 
 	 std::istream& operator>>(std::istream& is, Cronologia c){
 
-	   if(is){
-	     
-		EventoHistorico evento;
+	   while(is){
 
-		while(is >> evento){
+	     EventoHistorico evento;
+	     is >> evento;
+	     c.Agregar(evento);
 
-			c.Agregar(evento);
-
-		}
 	   }
-	
+
 	   return is;
+
 	}
 
 
