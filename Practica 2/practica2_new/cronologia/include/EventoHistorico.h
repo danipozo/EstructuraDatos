@@ -71,7 +71,7 @@ friend std::ostream& operator << (std::ostream& os,const EventoHistorico& evento
  * @param const istream& is, para leer el evento histórico sin modificar el istream
  * @param evento a leer
  */
-friend std::istream& operator >> (std::istream& is, EventoHistorico& evento);
+friend std::istream& operator>>(std::istream& is, EventoHistorico& evento);
 
    
 };

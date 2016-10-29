@@ -17,7 +17,7 @@ $(OBJ)/EventoHistorico.o: $(SRC)/EventoHistorico.cpp $(INC)/EventoHistorico.h
 
 	$(CXX) $(CPPFLAGS) -o $(OBJ)/EventoHistorico.o $(SRC)/EventoHistorico.cpp
 
-$(OBJ)/Cronologia.o: $(SRC)/Cronologia.cpp $(INC)/Cronologia.h $(INC)/EventoHistorico.h
+$(OBJ)/Cronologia.o: $(SRC)/Cronologia.cpp $(INC)/Cronologia.h $(INC)/EventoHistorico.h 
 
 	$(CXX) $(CPPFLAGS) -o $(OBJ)/Cronologia.o $(SRC)/Cronologia.cpp  
 

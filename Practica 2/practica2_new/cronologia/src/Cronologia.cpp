@@ -41,7 +41,7 @@
 		return it->Eventos();
 	}
 
-	 std::istream& operator>>(std::istream& is, Cronologia c){
+	 std::istream& operator>>(std::istream& is, Cronologia& c){
 
 	   while(is){
 

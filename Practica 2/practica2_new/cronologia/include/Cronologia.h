@@ -60,7 +60,7 @@ class Cronologia {
 	 */
 
 
-	friend std::istream& operator>>(std::istream& is, Cronologia c);
+	friend std::istream& operator>>(std::istream& is, Cronologia& c);
 
 
 
