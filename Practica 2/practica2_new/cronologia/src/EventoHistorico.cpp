@@ -30,16 +30,15 @@ std::istream& operator >>(std::istream& is, EventoHistorico& evento){
   if(is){
 
     is >> evento.fecha;
-    is.ignore();
 
-    while(is.peek() != '\n'){
+    while(is.peek() != '\n' && !is.eof()){
+      is.ignore();
       std::string mistring;
       char michar;
-      while(is.peek()!= '#'){
-	is >> michar;
+      while(is.peek()!= '#' && is.peek() != '\n' && !is.eof()){
+	is.get(michar);
 	mistring.push_back(michar);
       }
-      is.ignore();
       evento.eventos.push_back(mistring);
 
     }
